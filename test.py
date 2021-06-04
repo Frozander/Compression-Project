@@ -15,7 +15,7 @@ def main():
     for file in listdir(getcwd()):
         if file.startswith("test_"):
             compressor = FrozCompressor()
-            compressor.read_file(file, job_count=2, method='vowel_removal')
+            compressor.read_file(file, job_count=2)
             compressor.write_to_file('lossless.froz')
             # compressor.write_to_file('lossless_corrupt.froz')
 
@@ -27,7 +27,7 @@ def main():
 
             # compressor.read_file('lossless_corrupt.froz')
             # compressor.write_to_file("out_corrupt.txt")
-
+            compressor = FrozCompressor()
             compressor.read_file('lossless.froz')
             compressor.write_to_file("out.txt")
 
