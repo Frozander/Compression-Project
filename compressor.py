@@ -94,7 +94,9 @@ def _decode_job(encoded_data: str, tree: Dict[str, str]) -> str:
 def _vowel_filter(data: str) -> str:
     '''Removes vowels from input data'''
 
-    return data.translate(str.maketrans(dict.fromkeys('aeıioöuüAEIİOÖUÜ')))
+    vowels_dict = dict.fromkeys('aeıioöuüAEIİOÖUÜ')
+    translation_table = str.maketrans(vowels_dict)
+    return data.translate(translation_table)
 
 
 SWITCH = {
@@ -182,11 +184,6 @@ class FrozFileHandle(object):
             tmp = tmp[0:-self.__padding]
 
             self.__data = [tmp]
-
-            # print(f"self.__huffman_size: {self.__huffman_size}")
-            # print(f"self.__data_size: {self.__data_size}")
-            # print(f"self.__padding: {self.__padding}")
-            # print(f"self.__data: {self.__data}")
 
         else:
             self.file_handle = open(self.file_name, 'r')
